@@ -143,9 +143,10 @@ Lisk Founders Track — [Crecimiento Buildathon Season](https://x.com/alephhacka
 
 ## Join Our Journey
 
-<div align="center">
-  <img src="assets/Cura_Logo.jpg" alt="CuraAI Logo" width="300"/>
+<div style="display: flex; align-items: center; gap: 30px;">
+  <div>
+    Follow us on <a href="https://x.com/CuraAI_">X (Twitter)</a> and <a href="https://linkedin.com/company/curaai-xyz">LinkedIn</a>.<br/>
+    Reach out directly at <a href="mailto:nathaniel@curaai.xyz">nathaniel@curaai.xyz</a>.
+  </div>
+  <img src="assets/Cura_Logo.jpg" alt="CuraAI Logo" width="100"/>
 </div>
-
-Follow us on [X (Twitter)](https://x.com/CuraAI_) and [LinkedIn](https://linkedin.com/company/curaai-xyz).   
-Reach out directly at [nathaniel@curaai.xyz](mailto:nathaniel@curaai.xyz).
