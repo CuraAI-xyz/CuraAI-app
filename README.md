@@ -63,6 +63,34 @@ Future integrations include OCR for scanning patient records, Zero-Knowledge Pro
 
 ---
 
+## 📂 Project Structure
+
+Here’s an overview of the repository layout and visual assets.
+
+CuraAI-app/
+├── assets/ # images, diagrams, and static media
+│ ├── curaai_logo.png
+│ ├── system_architecture.png
+│ ├── demo_thumbnail.png
+│ └── other_visuals/
+├── src/ # core application source code
+├── components/ # reusable UI and logic modules
+├── README.md # project overview and setup guide
+
+
+### Visual Assets
+
+**🧠 System Architecture Diagram**
+![System Diagram](./assets/system_architecture.png)
+
+**🎥 Demo Preview**
+[![Watch the Demo on YouTube](./assets/demo_thumbnail.png)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
+
+> 📦 All static media, diagrams, and thumbnails are stored in `/assets/`.  
+> Please add new images there before committing changes.
+
+---
+
 ## Market Impact
 Healthcare intake automation represents a $50B+ global market.  
 Our initial focus is the $20B Latin American telehealth sector, expanding into NGO and public health contracts estimated between $500M–$1.5B.  
