@@ -18,7 +18,8 @@ function FilesPage() {
     headers: { "Content-Type": "multipart/form-data" },
     }).then(response => {
         setLoading(false)
-        response.data = JSON.parse(response.data.replace(/'/g, '"'));
+        let res_data = response.data
+        res_data = JSON.parse(res_data.replace(/'/g, '"'));
         setPatientData(response.data);
         console.log("Tipo:", typeof response.data);
         console.log("Contenido:", response.data);

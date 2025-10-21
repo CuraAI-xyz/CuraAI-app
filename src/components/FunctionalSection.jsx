@@ -1,4 +1,4 @@
-import RecordingButton from "./recordingButton"
+import RecordingButton from "./RecordingButton"
 import ToggleButton from "./ToggleButton"
 
 function FunctionalSection (){
