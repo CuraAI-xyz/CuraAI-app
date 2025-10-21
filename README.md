@@ -59,7 +59,7 @@ CuraAI doesn't diagnose — it prepares doctors with structured, privacy-preserv
 ## Our Competitive Edge
 
 <div align="center">
-  <img src="assets/Competitive_Edge_Chart.png" alt="CuraAI Competitive Positioning" width="700"/>
+  <img src="assets/Chart.jpg" alt="CuraAI Competitive Positioning" width="700"/>
 </div>
 
 **Uniquely positioned at the intersection of Voice-AI and Privacy-First technology:**
