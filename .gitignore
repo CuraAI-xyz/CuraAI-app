@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Credentials and sensitive files
+credentials.json
+*.credentials.json
+.env
+.env.local
+.env.production
+config/credentials.json
+
+# Cursor files
+.cursor/
