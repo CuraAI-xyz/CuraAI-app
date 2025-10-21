@@ -67,16 +67,17 @@ Future integrations include OCR for scanning patient records, Zero-Knowledge Pro
 
 Here’s an overview of the repository layout and visual assets.
 
+```
 CuraAI-app/
-├── assets/ # images, diagrams, and static media
-│ ├── curaai_logo.png
-│ ├── system_architecture.png
-│ ├── demo_thumbnail.png
-│ └── other_visuals/
-├── src/ # core application source code
-├── components/ # reusable UI and logic modules
-├── README.md # project overview and setup guide
-
+├── assets/             # images, diagrams, and static media
+│   ├── curaai_logo.png
+│   ├── system_architecture.png
+│   ├── demo_thumbnail.png
+│   └── other_visuals/
+├── src/                # core application source code
+├── components/         # reusable UI and logic modules
+├── README.md           # project overview and setup guide
+```
 
 ### Visual Assets
 
@@ -88,6 +89,9 @@ CuraAI-app/
 
 > 📦 All static media, diagrams, and thumbnails are stored in `/assets/`.  
 > Please add new images there before committing changes.
+
+---
+
 
 ---
 
