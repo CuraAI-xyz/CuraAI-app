@@ -1,31 +1,131 @@
 # CuraAI
+### Privacy-First Voice AI Agent for Telehealth Intake
 
-CuraAI is a privacy-first AI voice agent that automates telehealth intake and triage with secure AI (TEE) and private data analysis through FHE.
+[![Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
+[![Website](https://img.shields.io/badge/Website-Coming_Soon-blue)](https://curaai.xyz)
+[![X / Twitter](https://img.shields.io/badge/Follow_on-X-black)](https://x.com/CuraAI_)
+[![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-blue)](https://linkedin.com/company/curaai-xyz)
+![Built at Aleph Hackathon](https://img.shields.io/badge/Aleph%20Hackathon-3rd%20Place-orange)
+![Privacy-Preserving AI](https://img.shields.io/badge/AI-Privacy%20Preserving-green)
+![Powered by Zama](https://img.shields.io/badge/Encryption-Zama%20FHE-brightgreen)
 
+---
 
-### Full description:
+## TL;DR
+CuraAI builds a privacy-first voice agent that automates telehealth intake inside secure enclaves — accelerating care while keeping patient data private.
 
-CuraAI is a privacy-first voice AI agent built to automate telehealth intake and triage using confidential computing and privacy-preserving tech principles. Designed for clinics, NGOs, and healthcare systems, CuraAI conducts symptom interviews through natural conversation and generates structured summaries — all while preserving absolute patient confidentiality.
+---
 
-The system runs inside Trusted Execution Environments (TEEs), ensuring that all voice and text data are processed in secure enclaves where even system operators cannot access raw inputs. Zama’s Fully Homomorphic Encryption (FHE) enables privacy-preserving aggregation of demographic and symptom data, allowing providers to view encrypted analytics without ever exposing personal health information. 
+## Overview
+CuraAI is a privacy-first voice AI agent that automates the medical intake and triage process using confidential computing and encrypted analytics.  
+Built with Trusted Execution Environments (TEEs) and Fully Homomorphic Encryption (FHE), CuraAI runs sensitive AI inference securely — ensuring that even system operators cannot access raw patient data.
 
-CuraAI’s architecture treats privacy not as compliance overhead but as a foundational design layer. By leveraging AI inference inside TEEs, encrypted data flows, and zero-knowledge verification for sensitive attributes, CuraAI offers a new standard for secure digital health. The result is an intelligent intake agent that scales access to health care globally—without ever compromising patient trust or data sovereignty. 
+Patients interact naturally by voice, describing their symptoms while the agent asks relevant follow-ups and structures the conversation into standardized summaries for clinicians.  
+Doctors receive these summaries securely — complete with likely conditions, confidence levels, and reasoning — without CuraAI ever making a medical diagnosis. The goal: help doctors act faster with better information, not replace them.
 
-### Impact 
+---
 
-CuraAI is redefining clinical efficiency through privacy-preserving automation of the medical intake and triage process. In traditional healthcare settings, up to 30% of a clinician’s time is lost to routine intake tasks — collecting patient histories, symptoms, and demographic data before care even begins. CuraAI eliminates that bottleneck with a voice-based AI agent that conducts natural, guided conversations with patients before their appointment or during telehealth sessions. The system listens, asks relevant follow-up questions, and automatically structures the gathered data into clear, standardized summaries for clinicians.
+## The Problem
+Healthcare systems waste immense clinical capacity on routine intake:
+- 30% of clinical time is lost to manual symptom collection and administrative entry.  
+- Staff shortages leave millions without timely care, especially in developing regions.  
+- Privacy and compliance barriers block the adoption of most AI or digital intake tools.
 
-These summaries are securely transmitted to the attending physician, giving them an immediate, concise overview of the patient’s condition, context, and reported symptoms. CuraAI also assists in routing patients to the appropriate specialists or services when needed — for example, by flagging urgent cases or recommending specific departments — but it never provides medical diagnoses. Its role is that of a clinical assistant, not a decision-maker: it streamlines intake, not treatment.
+These inefficiencies delay treatment, reduce quality of care, and burden overworked clinicians — particularly in NGOs, public clinics, and resource-limited health systems.
 
-Under the hood, every part of this interaction is built with privacy and security at its core. All data processing occurs within Trusted Execution Environments (TEEs) — secure enclaves that isolate computations from any external access — and is encrypted end-to-end. Aggregated analytics use Fully Homomorphic Encryption (FHE), allowing providers to gain operational insights without ever seeing raw patient data. This ensures that no sensitive information is ever stored or exposed, even as the system learns and improves over time.
+---
 
-By combining conversational AI, confidential computing, and encrypted analytics, CuraAI delivers a practical and ethical automation layer for healthcare systems. It empowers clinics and NGOs to handle higher patient volumes with fewer administrative delays, freeing up medical professionals to focus on care rather than data entry. In doing so, CuraAI contributes not only to healthcare efficiency but to a new paradigm of trustworthy, privacy-first AI infrastructure that respects both human time and patient dignity.
+## Our Solution
+CuraAI automates the intake and triage layer of healthcare.  
 
-### Previous work 
+- Voice-based AI Agent — Converses naturally with patients to gather history, symptoms, and context.  
+- Intelligent Summarization — Generates structured clinical notes including symptom clusters, prior medication, family history, and relevant medical background.  
+- Smart Routing — Flags urgent cases and redirects patients to appropriate general or specialist care.  
+- TEE Enclaves — All inference runs inside secure enclaves, isolating patient data from any external access.  
+- FHE Analytics — Providers get encrypted demographic and intake analytics without exposing sensitive data.  
 
-We started this project with the Aleph hackathon 2025, in which we won the [third place in the Protocol Labs AI track](https://x.com/alephhackathon/status/1962885209596076193). Now, we are working on improving the technical and business development for launch our product with the guidance from the [Lisk's Founders Track from the Crecimiento Buildathon Season](https://x.com/alephhackathon/status/1973790903635480997)
+CuraAI doesn’t diagnose — it prepares doctors with structured, privacy-preserving information so they can focus on treatment, not paperwork.
 
-- MVP Repo: https://github.com/NathaliaBarreiros/CuraAI
-- Video: https://www.youtube.com/watch?v=5M4gKJ6Ipvk
+---
 
+## How It Works
+1. Patient describes symptoms through a voice call or app.  
+2. AI agent conducts a guided consultation (like a first interview).  
+3. AI processes data in a TEE, asking context-specific questions.  
+4. Patient approves sharing; doctor receives a structured summary with probabilities and reasoning.  
+5. Encrypted analytics are aggregated using FHE — giving clinics insight without data exposure.  
 
+Future integrations include OCR for scanning patient records, Zero-Knowledge Proofs for sensitive attributes, and encrypted dashboards for providers.
+
+---
+
+## Market Opportunity
+Healthcare intake automation represents a $50B+ global market.  
+Our initial focus is the $20B Latin American telehealth sector, expanding into NGO and public health contracts estimated between $500M–$1.5B.  
+
+Particularly strong beneficiaries include:
+- Public clinics with high intake volume and limited staff  
+- NGOs operating in underserved or rural regions  
+- Specialized fields like reproductive assistance, maternal health, and early diagnostic programs
+
+---
+
+## Architecture Highlights
+- Phala TEE – Secure in-session AI inference  
+- Zama FHE – Encrypted demographic and symptom analytics  
+- Privy – Wallet-based decentralized identity  
+- Twilio – Real voice input and streaming interface  
+- v0 by Vercel – Rapid frontend + dashboard  
+- (Planned) Filecoin for encrypted summary storage and Lisk for micropayments  
+
+---
+
+## Why It Matters
+Billions of people still face care delays due to staff shortages and privacy barriers.  
+CuraAI gives every patient a private, AI-powered voice that streamlines access to care — ethically and securely.
+
+---
+
+## Impact
+CuraAI redefines healthcare efficiency by freeing doctors from repetitive intake work.  
+NGOs and clinics can serve more patients in less time while maintaining end-to-end privacy compliance.  
+Every patient gets a private AI voice at the point of need, improving equity in digital health access.
+
+---
+
+## Team
+- Nathalia – Backend / Privacy  
+- Mauro – AI & Fullstack  
+- Fernando – Frontend (v0)  
+- Nathaniel – Product Lead  
+
+Backed by:  
+3rd Place — [Protocol Labs Aleph Hackathon (AI Track)](https://x.com/alephhackathon/status/1962885209596076193)  
+Lisk Founders Track — [Crecimiento Buildathon Season](https://x.com/alephhackathon/status/1973790903635480997)
+
+---
+
+## Quickstart (Developer Demo)
+```bash
+git clone https://github.com/NathaliaBarreiros/CuraAI.git
+cd CuraAI
+npm install
+npm run dev
+```
+
+---
+
+## Quick Links
+- MVP Repo: [github.com/NathaliaBarreiros/CuraAI](https://github.com/NathaliaBarreiros/CuraAI)  
+- Demo Video: [YouTube](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)   
+- Website: [CuraAI.xyz](https://curaai.xyz)  
+- Email: [nathaniel@curaai.xyz](mailto:nathaniel@curaai.xyz)  
+- X / Twitter: [@CuraAI_](https://x.com/CuraAI_)  
+- LinkedIn: [CuraAI-xyz](https://linkedin.com/company/curaai-xyz)
+
+---
+
+## Join Our Journey
+Follow us on [X (Twitter)](https://x.com/CuraAI_) and [LinkedIn](https://linkedin.com/company/curaai-xyz).  
+Subscribe for updates at [CuraAI.xyz](https://curaai.xyz).  
+Reach out directly at [nathaniel@curaai.xyz](mailto:nathaniel@curaai.xyz).
