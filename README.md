@@ -70,9 +70,9 @@ Here’s an overview of the repository layout and visual assets.
 ```
 CuraAI-app/
 ├── assets/             # images, diagrams, and static media
-│   ├── curaai_logo.png
-│   ├── system_architecture.png
-│   ├── demo_thumbnail.png
+│   ├── cura_logo.jpg
+│   ├── how_it_works.jpg
+│   ├── demo_thumbnail.jpg
 │   └── other_visuals/
 ├── src/                # core application source code
 ├── components/         # reusable UI and logic modules
@@ -85,7 +85,7 @@ CuraAI-app/
 ![System Diagram](./assets/system_architecture.png)
 
 **🎥 Demo Preview**
-[![Watch the Demo on YouTube](./assets/demo_thumbnail.png)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
+[![Watch the Demo on YouTube](./assets/cura_logo.jpg)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
 
 > 📦 All static media, diagrams, and thumbnails are stored in `/assets/`.  
 > Please add new images there before committing changes.
