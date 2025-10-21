@@ -1,6 +1,10 @@
 # CuraAI
 ### Privacy-First Voice AI Agent for Telehealth Intake
 
+<div align="center">
+  <img src="assets/Cura_Header_Logo.jpg" alt="CuraAI Header Logo" width="600"/>
+</div>
+
 [![Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
 [![Website](https://img.shields.io/badge/Website-Coming_Soon-blue)](https://curaai.xyz)
 [![X / Twitter](https://img.shields.io/badge/Follow_on-X-black)](https://x.com/CuraAI_)
@@ -48,7 +52,19 @@ CuraAI automates the intake and triage layer of healthcare.
 - TEE Enclaves — All inference runs inside secure enclaves, isolating patient data from any external access.  
 - FHE Analytics — Health providers get encrypted demographic and intake analytics without exposing sensitive data.  
 
-CuraAI doesn’t diagnose — it prepares doctors with structured, privacy-preserving information so they can focus on treatment, not paperwork.
+CuraAI doesn't diagnose — it prepares doctors with structured, privacy-preserving information so they can focus on treatment, not paperwork.
+
+---
+
+## Our Competitive Edge
+
+<div align="center">
+  <img src="assets/Competitive_Edge_Chart.png" alt="CuraAI Competitive Positioning" width="700"/>
+</div>
+
+**Uniquely positioned at the intersection of Voice-AI and Privacy-First technology:**
+- **High Privacy + Voice AI**: Unlike traditional chatbots or call centers, CuraAI combines natural voice interaction with enterprise-grade privacy protection
+- **Intelligent Pre-Diagnosis**: Our AI doesn't just collect data—it provides structured clinical insights while maintaining complete patient confidentiality
 
 ---
 
@@ -60,38 +76,6 @@ CuraAI doesn’t diagnose — it prepares doctors with structured, privacy-prese
 5. Encrypted analytics are aggregated using FHE — giving clinics insight without data exposure.  
 
 Future integrations include OCR for scanning patient records, Zero-Knowledge Proofs for sensitive data provenance, and encrypted dashboards for providers.
-
----
-
-## 📂 Project Structure
-
-Here’s an overview of the repository layout and visual assets.
-
-```
-CuraAI-app/
-├── assets/             # images, diagrams, and static media
-│   ├── cura_logo.jpg
-│   ├── how_it_works.jpg
-│   ├── demo_thumbnail.jpg
-│   └── other_visuals/
-├── src/                # core application source code
-├── components/         # reusable UI and logic modules
-├── README.md           # project overview and setup guide
-```
-
-### Visual Assets
-
-**🧠 System Architecture Diagram**
-![System Diagram](./assets/system_architecture.png)
-
-**🎥 Demo Preview**
-[![Watch the Demo on YouTube](./assets/cura_logo.jpg)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
-
-> 📦 All static media, diagrams, and thumbnails are stored in `/assets/`.  
-> Please add new images there before committing changes.
-
----
-
 
 ---
 
@@ -158,5 +142,10 @@ Lisk Founders Track — [Crecimiento Buildathon Season](https://x.com/alephhacka
 ---
 
 ## Join Our Journey
+
+<div align="center">
+  <img src="assets/Cura_Logo.jpg" alt="CuraAI Logo" width="300"/>
+</div>
+
 Follow us on [X (Twitter)](https://x.com/CuraAI_) and [LinkedIn](https://linkedin.com/company/curaai-xyz).   
 Reach out directly at [nathaniel@curaai.xyz](mailto:nathaniel@curaai.xyz).
