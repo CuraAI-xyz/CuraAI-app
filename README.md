@@ -94,8 +94,8 @@ Particularly strong beneficiaries include:
 
 We started this project within the Aleph hackathon 2025, in which we won the [third place in the Protocol Labs AI track](https://x.com/alephhackathon/status/1962885209596076193). Now, we are working on improving the technical and business development for launch our product with the guidance from the [Lisk's Founders Track from the Crecimiento Buildathon Season](https://x.com/alephhackathon/status/1973790903635480997)
 
-- Hackathon Repo: https://github.com/NathaliaBarreiros/CuraAI
-- Hackathon Video: https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc
+- [Hackathon Repo](https://github.com/NathaliaBarreiros/CuraAI)
+- [Hackathon Video](https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc)
 
 ### Roadmap
 
