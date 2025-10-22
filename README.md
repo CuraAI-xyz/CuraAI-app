@@ -5,7 +5,7 @@
   <img src="assets/Cura_Header_Logo.jpg" alt="CuraAI Header Logo" width="600"/>
 </div>
 
-[![Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)
+[![Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc)
 [![Website](https://img.shields.io/badge/Website-Coming_Soon-blue)](https://curaai.xyz)
 [![X / Twitter](https://img.shields.io/badge/Follow_on-X-black)](https://x.com/CuraAI_)
 [![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-blue)](https://linkedin.com/company/curaai-xyz)
@@ -95,7 +95,7 @@ Particularly strong beneficiaries include:
 We started this project within the Aleph hackathon 2025, in which we won the [third place in the Protocol Labs AI track](https://x.com/alephhackathon/status/1962885209596076193). Now, we are working on improving the technical and business development for launch our product with the guidance from the [Lisk's Founders Track from the Crecimiento Buildathon Season](https://x.com/alephhackathon/status/1973790903635480997)
 
 - Hackathon Repo: https://github.com/NathaliaBarreiros/CuraAI
-- Hackathon Video: https://www.youtube.com/watch?v=5M4gKJ6Ipvk
+- Hackathon Video: https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc
 
 ### Roadmap
 
@@ -134,7 +134,7 @@ Lisk Founders Track — [Crecimiento Buildathon Season](https://x.com/alephhacka
 
 ## Quick Links
 - MVP Repo: [github.com/NathaliaBarreiros/CuraAI](https://github.com/NathaliaBarreiros/CuraAI)  
-- Demo Video: [YouTube](https://www.youtube.com/watch?v=5M4gKJ6Ipvk)   
+- Demo Video: [YouTube](https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc)   
 - Website: [CuraAI.xyz](https://curaai.xyz)   
 - X / Twitter: [@CuraAI_](https://x.com/CuraAI_)  
 - LinkedIn: [CuraAI-xyz](https://linkedin.com/company/curaai-xyz)
