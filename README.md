@@ -2,7 +2,7 @@
 ### Privacy-First Voice AI Agent for Telehealth Intake
 
 <div align="center">
-  <img src="assets/Cura_Header_Logo.jpg" alt="CuraAI Header Logo" width="600"/>
+  <img src="assets/Cura_Header_Logo2.jpg" alt="CuraAI Header Logo" width="600"/>
 </div>
 
 [![Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://youtu.be/xX7BaMqXl9E?si=txP0HqxSDtFxjVlc)
