@@ -14,7 +14,7 @@ function FilesPage() {
     setLoading(true)
     const formData = new FormData();
     formData.append('image', file);
-    axios.post("http://127.0.0.1:8000/ocr", formData, {
+    axios.post("https://curaai-agent.onrender.com/ocr", formData, {
     headers: { "Content-Type": "multipart/form-data" },
     }).then(response => {
         setLoading(false)

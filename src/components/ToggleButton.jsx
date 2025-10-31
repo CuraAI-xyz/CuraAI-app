@@ -9,8 +9,8 @@ export default function ToggleButton() {
     setActive(newActive);
 
     const url = newActive
-      ? "http://127.0.0.1:8000/start_agent"
-      : "http://127.0.0.1:8000/stop_agent";
+      ? "http://cura-ai-production-63d5.up.railway.app/start_agent"
+      : "http://cura-ai-production-63d5.up.railway.app/stop_agent";
 
     try {
       await fetch(url, { method: "POST" });
@@ -21,7 +21,7 @@ export default function ToggleButton() {
           ws.current.close();
         }
 
-        ws.current = new WebSocket("ws://127.0.0.1:8000/ws/audio");
+        ws.current = new WebSocket("ws://cura-ai-production-63d5.up.railway.app/audio");
 
         ws.current.onopen = () => {
           console.log("WebSocket conectado y listo para recibir audio");
@@ -56,9 +56,16 @@ export default function ToggleButton() {
   return (
     <div
       onClick={handleToggle}
-      className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
+      className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition-all select-none touch-manipulation ${
         active ? "bg-[#61A5C2]" : "bg-gray-300"
       }`}
+      style={{ 
+        WebkitTouchCallout: 'none', 
+        WebkitUserSelect: 'none',
+        userSelect: 'none',
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation'
+      }}
     >
       <div
         className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform ${
