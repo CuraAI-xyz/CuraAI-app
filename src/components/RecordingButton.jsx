@@ -13,34 +13,45 @@ function RecordingButton() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    wsRef.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
-
-    wsRef.current.onopen = () => console.log("WebSocket conectado");
-
-    wsRef.current.onmessage = async (event) => {
-      console.log("Mensaje recibido del servidor:", event.data);
-
-      if (typeof event.data === "string") {
-        console.log("Texto recibido:", event.data);
-      } else if (event.data instanceof Blob) {
-        await playAudioBlob(event.data);
-      } else if (event.data instanceof ArrayBuffer) {
-        const blob = new Blob([event.data], { type: "audio/wav" });
-        await playAudioBlob(blob);
-      }
-    };
-
-    wsRef.current.onerror = (error) => console.error("Error en WebSocket:", error);
-    wsRef.current.onclose = () => console.log("WebSocket desconectado");
-
+    if (!wsRef.current || wsRef.current.readyState === WebSocket.CLOSED) {
+      wsRef.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
+      
+      wsRef.current.onopen = () => console.log("WebSocket conectado");
+      
+      wsRef.current.onmessage = async (event) => {
+        console.log("Mensaje recibido del servidor:", event.data);
+        
+        if (typeof event.data === "string") {
+          console.log("Texto recibido:", event.data);
+        } else if (event.data instanceof Blob) {
+          await playAudioBlob(event.data);
+        } else if (event.data instanceof ArrayBuffer) {
+          const blob = new Blob([event.data], { type: "audio/wav" });
+          await playAudioBlob(blob);
+        }
+      };
+      
+      wsRef.current.onerror = (error) => console.error("Error en WebSocket:", error);
+      wsRef.current.onclose = () => {
+        console.log("WebSocket desconectado");
+        // Reconectar después de 3 segundos si se cierra inesperadamente
+        setTimeout(() => {
+          if (wsRef.current?.readyState === WebSocket.CLOSED) {
+            console.log("Intentando reconectar WebSocket...");
+            wsRef.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
+          }
+        }, 3000);
+      };
+    }
+    
     return () => {
-      if (wsRef.current) wsRef.current.close();
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
+      // Solo cerrar si el componente se desmonta completamente
+      // No cerrar en cada render
     };
   }, []);
+
+
+
 
   const playAudioBlob = async (blob) => {
     try {
@@ -124,14 +135,64 @@ function RecordingButton() {
 
   return (
     <>
-      <button
-        onClick={handleClick}
-        className={`w-30 h-30 p-8 mx-auto rounded-full select-none touch-manipulation cursor-pointer transition-all ${
-          isRecording ? "bg-red-500 active:bg-red-600" : "bg-[#61A5C2] active:bg-[#5d9cb7]"
-        }`}
-      >
-        <Mic size={32} color="white" />
-      </button>
+      // Reemplazar el botón completo
+<button
+  onTouchStart={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isRecording) {
+      startRecording();
+    }
+  }}
+  onTouchEnd={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isRecording) {
+      stopRecording();
+    }
+  }}
+  onTouchCancel={(e) => {
+    e.preventDefault();
+    if (isRecording) {
+      stopRecording();
+    }
+  }}
+  onMouseDown={(e) => {
+    e.preventDefault();
+    if (!isRecording) {
+      startRecording();
+    }
+  }}
+  onMouseUp={(e) => {
+    e.preventDefault();
+    if (isRecording) {
+      stopRecording();
+    }
+  }}
+  onMouseLeave={(e) => {
+    // Detener si el mouse sale del botón mientras está grabando
+    if (isRecording) {
+      stopRecording();
+    }
+  }}
+  onClick={(e) => {
+    // Prevenir el click emulado en móviles
+    e.preventDefault();
+    e.stopPropagation();
+  }}
+  className={`w-30 h-30 p-8 mx-auto rounded-full select-none touch-manipulation cursor-pointer transition-all ${
+    isRecording ? "bg-red-500 active:bg-red-600" : "bg-[#61A5C2] active:bg-[#5d9cb7]"
+  }`}
+  style={{
+    WebkitTouchCallout: 'none',
+    WebkitUserSelect: 'none',
+    userSelect: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    touchAction: 'none'
+  }}
+>
+  <Mic size={32} color="white" />
+</button>
 
       {isRecording && (
         <div className="flex gap-3 w-min mx-auto items-center">

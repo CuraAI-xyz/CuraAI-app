@@ -21,6 +21,7 @@ export default function ToggleButton() {
           ws.current.close();
         }
 
+        //ws.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
         ws.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
 
         ws.current.onopen = () => {
