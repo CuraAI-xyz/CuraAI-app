@@ -135,7 +135,6 @@ function RecordingButton() {
 
   return (
     <>
-      // Reemplazar el botón completo
 <button
   onTouchStart={(e) => {
     e.preventDefault();
