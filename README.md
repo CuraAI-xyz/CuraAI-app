@@ -9,21 +9,21 @@
 [![Website](https://img.shields.io/badge/Website-Coming_Soon-blue)](https://curaai.xyz)
 [![X / Twitter](https://img.shields.io/badge/Follow_on-X-black)](https://x.com/CuraAI_)
 [![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-blue)](https://linkedin.com/company/curaai-xyz)
-![Built at Aleph Hackathon](https://img.shields.io/badge/Aleph%20Hackathon-3rd%20Place-orange)
+![Built at Aleph Hackathon](https://img.shields.io/badge/Aleph%20Hackathon%202025-3rd%20Place%20AI%20track%20Protocol%20Labs-orange)
 ![Privacy-Preserving AI](https://img.shields.io/badge/AI-Privacy%20Preserving-green)
 ![Powered by Zama](https://img.shields.io/badge/Encryption-Zama%20FHE-brightgreen)
 
 ---
 
 ## TL;DR
-CuraAI builds a privacy-first voice agent that automates telehealth intake inside secure enclaves — accelerating healthcare while keeping patient data private.
+CuraAI builds a privacy-first voice agent that automates telehealth intake on fully encrypted data using FHE — accelerating healthcare while keeping patient data private.
 
 ---
 
 ## Overview
-CuraAI is a privacy-first voice AI agent that automates the medical intake and triage process using confidential computing and encrypted analytics.
+CuraAI is a privacy-first voice AI agent that automates the medical intake and triage process using confidential AI and encrypted analytics.
 
-Built with Trusted Execution Environments (TEEs) and Fully Homomorphic Encryption (FHE), CuraAI runs sensitive AI inference securely — ensuring that even system operators cannot access raw patient data.
+Built with Fully Homomorphic Encryption (FHE), CuraAI runs *ll AI inference on encrypted data — ensuring that even system operators cannot access raw patient data.
 
 Patients interact naturally by voice, describing their symptoms while the agent asks relevant follow-ups and structures the conversation into standardized summaries for clinicians.
 
@@ -44,13 +44,13 @@ These inefficiencies delay treatment, reduce the quality of care, and burden ove
 ---
 
 ## Our Solution
-CuraAI automates the intake and triage layer of healthcare.  
+CuraAI automates the intake and triage layer of healthcare.
 
-- Voice-based AI Agent — Converses naturally with patients to gather history, symptoms, and context.  
-- Intelligent Summarization — Generates structured clinical notes including symptom clusters, prior medication, family history, and relevant medical background.  
-- Smart Routing — Flags urgent cases and redirects patients to appropriate general or specialist care.  
-- TEE Enclaves — All inference runs inside secure enclaves, isolating patient data from any external access.  
-- FHE Analytics — Health providers get encrypted demographic and intake analytics without exposing sensitive data.  
+- **Voice-based AI Agent** — Converses naturally with patients to gather history, symptoms, and context.  
+- **Intelligent Summarization** — Generates structured clinical notes including symptom clusters, prior medication, family history, and relevant medical background.  
+- **Smart Routing** — Flags urgent cases and redirects patients to appropriate general or specialist care.  
+- **FHE Inference** — All AI runs on encrypted data using Fully Homomorphic Encryption — no plaintext, no hardware trust.  
+- **FHE Analytics** — Health providers get encrypted demographic and intake analytics without exposing sensitive data.
 
 CuraAI doesn't diagnose — it prepares doctors with structured, privacy-preserving information so they can focus on treatment, not paperwork.
 
@@ -71,11 +71,12 @@ CuraAI doesn't diagnose — it prepares doctors with structured, privacy-preserv
 ## How It Works
 1. Patient describes symptoms through voice conversation.  
 2. AI agent conducts a guided consultation (like a first interview).  
-3. AI processes data in a TEE, asking context-specific questions.  
-4. Patient approves sharing; doctor receives a structured summary with probabilities and reasoning.  
-5. Encrypted analytics are aggregated using FHE — giving clinics insight without data exposure.  
+3. AI processes data on encrypted audio using FHE, asking context-specific questions.  
+4. Encrypted summary is sent back — patient decrypts locally, approves sharing.  
+5. Doctor receives structured summary with probabilities and reasoning.  
+6. Encrypted analytics are aggregated using FHE — giving clinics insight without data exposure.  
 
-Future integrations include OCR for scanning patient records, Zero-Knowledge Proofs for sensitive data provenance, and encrypted dashboards for providers.
+Future integrations include FHE OCR for scanning patient records, Zero-Knowledge Proofs for sensitive data provenance, and encrypted dashboards for providers.
 
 ---
 
@@ -99,16 +100,17 @@ We started this project within the Aleph hackathon 2025, in which we won the [th
 
 ### Roadmap
 
-- Improve the AI-agent
-- Deploy the agent within a TEE
-- Fully integrate Zama FHE statistics
-- Add OCR for digitizing paper files
-- Integrate ZKPs for sensitive data provenance
-- Fully build the health provider dash and improve the patient dash
-- NGO pilot program
-- NGO program refined & extended to private/public health centers
-- Feedback on the app
-- LATAM expansion
+- Improve the AI-agent  
+- Run FHE ML inference on ciphertext 
+- Fully integrate Zama FHE statistics  
+- Build first iteration of patient and provider dashboards  
+- Add OCR for digitizing paper files (run with FHE)  
+- Integrate ZKPs for sensitive data provenance  
+- Improve patient and provider dashboards  
+- NGO pilot program  
+- NGO program refined & extended to private/public health centers  
+- Feedback on the app  
+- LATAM expansion  
 - Africa + India rollout
 
 ---
