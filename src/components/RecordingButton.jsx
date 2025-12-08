@@ -8,7 +8,7 @@ function RecordingButton() {
   const [audioURL, setAudioURL] = useState(null);
   const [audioBlob, setAudioBlob] = useState(null);
   const { setShowCalendar } = useContext(UserContext);
-  const API_URL = import.meta.env.DEPLOY_URL;
+  const API_URL = import.meta.env.VITE_DEPLOY_URL;
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
   const wsRef = useRef(null);

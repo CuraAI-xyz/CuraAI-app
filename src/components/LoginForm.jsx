@@ -9,7 +9,7 @@ function LoginForm() {
     const { client, setClient, setUser, setUserId, userId } = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const API_URL = import.meta.env.DEPLOY_URL
+    const API_URL = import.meta.env.VITE_DEPLOY_URL
     useEffect(() => {
         if (url && anonKey && !client) {
             setClient(createClient(url, anonKey))

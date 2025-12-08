@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 export default function ToggleButton() {
   const [active, setActive] = useState(false);
   const ws = useRef(null);
-  const API_URL = import.meta.env.DEPLOY_URL;
+  const API_URL = import.meta.env.VITE_DEPLOY_URL;
   const handleToggle = async () => {
     const newActive = !active;
     setActive(newActive);
