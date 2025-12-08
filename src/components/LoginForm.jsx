@@ -34,11 +34,10 @@ function LoginForm() {
                     .from('UsersData')
                     .select('*')
                     .eq('user_id', authData.user.id).single()
-                console.log("table data:  ", data);
                 if (error) {
                     console.error("Error fetching user data:", error);
                 }
-                await fetch(`http://${URL}/userId`, {
+                await fetch(`http://${API_URL}/userId`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
