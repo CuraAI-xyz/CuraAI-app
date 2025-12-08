@@ -9,7 +9,7 @@ function LoginForm() {
     const { client, setClient, setUser, setUserId, userId } = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    const API_URL = import.meta.env.DEPLOY_URL
     useEffect(() => {
         if (url && anonKey && !client) {
             setClient(createClient(url, anonKey))
@@ -38,7 +38,7 @@ function LoginForm() {
                 if (error) {
                     console.error("Error fetching user data:", error);
                 }
-                await fetch('http://127.0.0.1:8080/userId', {
+                await fetch(`http://${URL}/userId`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
