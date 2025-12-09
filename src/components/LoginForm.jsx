@@ -37,7 +37,7 @@ function LoginForm() {
                 if (error) {
                     console.error("Error fetching user data:", error);
                 }
-                await fetch(`http://${API_URL}/userId`, {
+                await fetch("http://127.0.0.1:8080/userId", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
