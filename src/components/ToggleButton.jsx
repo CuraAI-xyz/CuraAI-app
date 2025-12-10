@@ -22,7 +22,7 @@ export default function ToggleButton() {
         }
 
         //ws.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
-        ws.current = new WebSocket(`ws://127.0.0.1:8080/audio`);
+        ws.current = new WebSocket(`wss://cura-ai-production-63d5.up.railway.app/audio`);
 
         ws.current.onopen = () => {
           console.log("WebSocket conectado y listo para recibir audio (prod)");

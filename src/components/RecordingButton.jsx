@@ -8,7 +8,6 @@ function RecordingButton() {
   const [audioURL, setAudioURL] = useState(null);
   const [audioBlob, setAudioBlob] = useState(null);
   const { setShowCalendar } = useContext(UserContext);
-  const API_URL = import.meta.env.VITE_DEPLOY_URL;
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
   const wsRef = useRef(null);
@@ -17,7 +16,7 @@ function RecordingButton() {
   useEffect(() => {
     setShowCalendar(false); 
     if (!wsRef.current || wsRef.current.readyState === WebSocket.CLOSED) {
-      wsRef.current = new WebSocket("ws://127.0.0.1:8080/audio");
+      wsRef.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
       
       wsRef.current.onopen = () => console.log("WebSocket conectado");
       
@@ -48,7 +47,7 @@ function RecordingButton() {
         setTimeout(() => {
           if (wsRef.current?.readyState === WebSocket.CLOSED) {
             console.log("Intentando reconectar WebSocket...");
-            wsRef.current = new WebSocket("ws://127.0.0.1:8080/audio");
+            wsRef.current = new WebSocket("wss://cura-ai-production-63d5.up.railway.app/audio");
           }
         }, 3000);
       };
