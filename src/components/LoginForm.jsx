@@ -36,7 +36,7 @@ function LoginForm() {
                 if (error) {
                     console.error("Error fetching user data:", error);
                 }
-                await fetch("http://cura-ai-production-63d5.up.railway.app/userId", {
+                await fetch("https://curaai-agent-production.up.railway.app/userId", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

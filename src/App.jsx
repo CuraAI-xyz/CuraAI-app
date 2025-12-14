@@ -6,7 +6,7 @@ import Header from './components/Header';
 import RegisterPage from './pages/RegisterPage';
 import { useContext } from 'react';
 import { UserContext } from './userContext.jsx';
-
+import VoiceRecorder from './pages/VoiceRecorder.jsx';
 function App() {
   const { user, loading } = useContext(UserContext);
 
@@ -17,6 +17,7 @@ function App() {
         <Route path="/loginpage" element={user ? <Navigate to="/" /> : <LoginPage />} />
         <Route path="/registerpage" element={<RegisterPage />} />
         <Route path="/" element={user ? <VoicePage /> : <Navigate to="/loginpage" />} />
+        <Route path="/test" element={<VoiceRecorder/>} />
       </Routes>
     </Router>
   );

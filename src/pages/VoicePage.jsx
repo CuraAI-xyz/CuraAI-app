@@ -4,9 +4,10 @@ import FunctionalSection from '../components/FunctionalSection.jsx'
 import { UserContext } from '../userContext.jsx'
 import { useContext } from 'react'
 import { InlineWidget } from "react-calendly";
+import VoiceRecorder from './VoiceRecorder.jsx'
 
 function VoicePage() {
-  const { showCalendar } = useContext(UserContext);
+  const { showCalendar, userId } = useContext(UserContext);
 
   return (
     <>
@@ -18,7 +19,8 @@ function VoicePage() {
           <h1 className='font-bold text-6xl text-center text-[#0D1B2A]'>Welcome to CuraAI</h1>
           <p className='mx-auto text-[15px] text-center w-100 text-gray-500'>Just press and hold the microphone to speak</p>
         </div>
-        <FunctionalSection/>
+        {/*<FunctionalSection/>*/}
+        <VoiceRecorder patientId={userId}/>
         {showCalendar ? (
           <div className="w-full">
             <InlineWidget 
