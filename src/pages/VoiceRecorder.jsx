@@ -22,11 +22,11 @@ function VoiceRecorder({ patientId = "123" }) {
   const connectWebSocket = () => {
     // Asegúrate de que esta URL coincida con tu backend
     
-    const wsUrl = `wss://curaai-agent-production.up.railway.app/audio?patient_id=${patientId}`;
+    const wsUrl = `ws://localhost:8080/audio?patient_id=${patientId}`;
     console.log("Intentando conectar a:", wsUrl);
 
     const ws = new WebSocket(wsUrl);
-    ws.binaryType = 'blob';  
+    ws.binaryType = 'arraybuffer';  
 
     ws.onopen = () => {
       console.log("✅ WebSocket Conectado");
@@ -36,8 +36,27 @@ function VoiceRecorder({ patientId = "123" }) {
     ws.onmessage = (event) => {
       const data = event.data;
 
-      if (data instanceof Blob) {
-        console.log("🔊 Audio recibido:", data.size, "bytes");
+      if (data instanceof ArrayBuffer) {
+        console.log("🔊 Audio recibido:", data.byteLength, "bytes");
+
+        if (data.byteLength < 100) {
+           console.warn("⚠️ Archivo muy pequeño, ignorando.");
+           return; 
+        }
+
+        const audioBlob = new Blob([data], { type: 'audio/mpeg' }); 
+        
+        // Creamos la URL con este nuevo Blob tipado
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        setAiResponseAudio(audioUrl);
+        
+        // Reproducir
+        const audio = new Audio(audioUrl);
+        audio.play().catch(e => console.warn("Autoplay bloqueado:", e));
+      }
+      else if (data instanceof Blob) {
+        console.log("🔊 Audio recibido (Blob):", data.size, "bytes");
 
         if (data.size < 100) {
            console.warn("⚠️ Archivo muy pequeño, ignorando.");
@@ -118,7 +137,7 @@ function VoiceRecorder({ patientId = "123" }) {
   };
 
   
-  const sendAudioToBackend = (blobToSend = null) => {
+  const sendAudioToBackend = async (blobToSend = null) => {
     // Usar el blob pasado como parámetro, o el del estado como fallback
     const blob = blobToSend || audioBlob;
     
@@ -131,7 +150,12 @@ function VoiceRecorder({ patientId = "123" }) {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
       console.log("📤 Enviando audio al backend...", blob.size, "bytes");
       setAiResponseAudio(null); // Limpiar respuesta anterior
-      socketRef.current.send(blob);
+      
+      // Convertir a ArrayBuffer para mantener integridad en WSS
+      const arrayBuffer = await blob.arrayBuffer();
+      socketRef.current.send(arrayBuffer);
+      console.log("✅ Audio enviado:", arrayBuffer.byteLength, "bytes");
+      
       // Limpiar el blob después de enviar
       setAudioBlob(null);
     } else {

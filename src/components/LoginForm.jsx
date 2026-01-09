@@ -40,7 +40,7 @@ function LoginForm() {
                     console.error("Error fetching user data:", error);
                 }
                 console.log("DATA: ", data)
-                await fetch("https://curaai-agent-production.up.railway.app/userId", {
+                await fetch("http://localhost:8080/userId", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

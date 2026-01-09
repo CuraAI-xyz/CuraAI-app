@@ -16,7 +16,8 @@ function RecordingButton() {
   useEffect(() => {
     setShowCalendar(false); 
     if (!wsRef.current || wsRef.current.readyState === WebSocket.CLOSED) {
-      wsRef.current = new WebSocket("wss://curaai-agent-production.up.railway.app/audio");
+      wsRef.current = new WebSocket("ws://localhost:8080/audio");
+      wsRef.current.binaryType = 'arraybuffer';
       
       wsRef.current.onopen = () => console.log("WebSocket conectado");
       
@@ -33,11 +34,11 @@ function RecordingButton() {
           } 
         } 
         // --- LÓGICA DE AUDIO ---
-        else if (event.data instanceof Blob) {
-          await playAudioBlob(event.data);
-        } else if (event.data instanceof ArrayBuffer) {
+        else if (event.data instanceof ArrayBuffer) {
           const blob = new Blob([event.data], { type: "audio/wav" });
           await playAudioBlob(blob);
+        } else if (event.data instanceof Blob) {
+          await playAudioBlob(event.data);
         }
       };
       
@@ -47,7 +48,8 @@ function RecordingButton() {
         setTimeout(() => {
           if (wsRef.current?.readyState === WebSocket.CLOSED) {
             console.log("Intentando reconectar WebSocket...");
-            wsRef.current = new WebSocket("wss://curaai-agent-production.up.railway.app/audio");
+            wsRef.current = new WebSocket("ws://localhost:8080/audio");
+            wsRef.current.binaryType = 'arraybuffer';
           }
         }, 3000);
       };
