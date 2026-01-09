@@ -31,7 +31,8 @@ function RegisterForm() {
             setPasswordError(true)
             return
         }
-        register({email, password, firstName, lastName})
+        const role = "patient"
+        register({email, password, firstName, lastName, role})
     }
 
 
@@ -53,10 +54,10 @@ function RegisterForm() {
 
     return (
         <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-center text-[#1b2445] dark:text-white mb-6">Register to CuraAI</h2>
+            <h2 className="text-2xl font-bold text-center text-[#1b2445] dark:text-white mb-6">Registrate en CuraAI</h2>
             <form onSubmit={submit} action="#" className="space-y-6" method="POST">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="firstName">First Name</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="firstName">Nombre</label>
                     <div className="mt-1">
                         <input 
                             onChange={firstNameChange} 
@@ -70,7 +71,7 @@ function RegisterForm() {
                     </div>
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="lastName">Last Name</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="lastName">Apellido</label>
                     <div className="mt-1">
                         <input 
                             onChange={lastNameChange} 
@@ -84,7 +85,7 @@ function RegisterForm() {
                     </div>
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="username">Email</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="username">Correo Electronico</label>
                     <div className="mt-1">
                         <input 
                             onChange={emailChange} 
@@ -99,8 +100,8 @@ function RegisterForm() {
                 </div>
                 <div>
                     <div className="w-full flex justify-between">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="password">Password</label>
-                    {passwordError && <p className="text-red-500 text-sm mb-2 text-end">Passwords do not match</p>}
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="password">Contraseña</label>
+                    {passwordError && <p className="text-red-500 text-sm mb-2 text-end">Las contraseñas no coinciden</p>}
                     </div>
                     <div className="mt-1">
                         <input 
@@ -116,8 +117,8 @@ function RegisterForm() {
                 </div>
                 <div>
                     <div className="w-full flex justify-between">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="password">Confirm Password</label>
-                    {passwordError && <p className="text-red-500 text-sm mb-2 text-end">Passwords do not match</p>}
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="password">Confirmar Contraseña</label>
+                    {passwordError && <p className="text-red-500 text-sm mb-2 text-end">Las contraseñas no coinciden</p>}
                     </div>
                     <div className="mt-1">
                         <input 
@@ -133,7 +134,7 @@ function RegisterForm() {
                 </div>
                 <div>
                     <button className="w-full bg-[#61A5C2] flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-[#5a96b0] hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-800 transition-colors duration-200" type="submit">
-                        Register
+                        Registrarse
                     </button>
                 </div>
             </form>

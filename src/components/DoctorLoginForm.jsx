@@ -1,16 +1,17 @@
 import "../App.css";
 import { createClient } from '@supabase/supabase-js'
 import { useState, useEffect, useContext } from 'react'
+import { useNavigate } from "react-router-dom";
 import { UserContext } from '../userContext.jsx'
 import SignIn from "../utils/authSignIn.js";
-function LoginForm() {
+
+function DoctorLoginForm() {
     const url = import.meta.env.VITE_SUPABASE_URL
     const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+    const navigate = useNavigate();
     const { client, setClient, setUser, setUserId, userId } = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
-
     useEffect(() => {
         if (url && anonKey && !client) {
             setClient(createClient(url, anonKey))
@@ -25,40 +26,15 @@ function LoginForm() {
             alert("Cliente de Supabase no está inicializado")
             return
         }
-
+        
         const authData= await SignIn(client, email, password)
-        if(authData){
-            if(authData.user.user_metadata == "patient"){
-                setUser(authData.user)
-                setUserId(authData.user.id)
-                try {
-                let { data , error } = await client
-                    .from('UsersData')
-                    .select('*')
-                    .eq('user_id', authData.user.id).single()
-                if (error) {
-                    console.error("Error fetching user data:", error);
-                }
-                console.log("DATA: ", data)
-                await fetch("http://127.0.0.1:8080/userId", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                        userId: data.user_id, 
-                        name: data.nombre ,
-                        surname: data.apellido,
-                        sex: data.sexo
-                    }), 
-                })
-            }  catch (e) {
-                console.error("Error sending userId to server:", e);
-            }
-            }
-        }else{
-            console.log("El doctor no se puede registrar como paciente")
+        if(authData.user.user_metadata == "doctor"){
+            navigate("/doctorDashboard");
         }
+        else{
+            navigate("/")
+        }
+        setUser(authData.user)
     }
 
     const emailChange = (e) => {
@@ -71,7 +47,7 @@ function LoginForm() {
     return (
         <div className="w-full font-rubik max-w-md bg-[#80c6e4] rounded-2xl shadow-xl p-8">
             <h1 className="text-6xl text-center font-rubik font-bold mb-5 text-[#1b2445]">CuraAI</h1>
-            <h2 className="text-xl font-bold text-center text-[#1b2445] mb-6 font-rubik">Inicia Sesión</h2>
+            <h2 className="text-xl font-bold text-center text-[#1b2445] mb-6 font-rubik">Inicia Sesión como médico</h2>
             <form onSubmit={submit} action="#" className="space-y-6" method="POST">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 " htmlFor="username">Correo Electronico</label>
@@ -115,7 +91,7 @@ function LoginForm() {
             <div className="mt-6 text-center">
                 <p className="text-sm flex justify-center gap-1 text-primary">
                     Aún no tenes cuenta?
-                    <a className="font-medium text-[#61A5C2] hover:text-[#5a96b0]" href="/registerpage">
+                    <a className="font-medium text-[#61A5C2] hover:text-[#5a96b0]" href="/doctor">
                         Registrate
                     </a>
                 </p>
@@ -124,4 +100,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default DoctorLoginForm;

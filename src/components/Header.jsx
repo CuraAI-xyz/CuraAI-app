@@ -12,8 +12,10 @@ function Header() {
         <img src={CuraLogo} alt="" width={50}/>
         <h1 className="text-2xl text-[#0D1B2A]">CuraAI</h1>
         </div>
-        <button onClick={handleLogout} className='border-1 p-2 rounded-md'>Logout</button>
-        <a className="border-1 p-3 rounded" href="/filesUpload">Scan my docs</a>
+        <div className='flex gap-4'>
+        <a className="border py-3 px-4 rounded-full" href="/filesUpload">Scan my docs</a>
+        <button onClick={handleLogout} className='bg-[#61A5C2] border py-3 px-4 text-white rounded-full cursor-pointer'>Logout</button>
+        </div>
     </header>
   );
 }

@@ -1,54 +1,69 @@
 import Header from '../components/Header.jsx'
 import soundWave from '../assets/wave-sound.png'
-import FunctionalSection from '../components/FunctionalSection.jsx'
+// import FunctionalSection from '../components/FunctionalSection.jsx' // Lo tenías comentado
 import { UserContext } from '../userContext.jsx'
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react' // Importante: agregar useEffect
 import { InlineWidget } from "react-calendly";
 import VoiceRecorder from './VoiceRecorder.jsx'
+import FunctionalityGrid from '../components/FunctionalityGrid.jsx'
 
 function VoicePage() {
-  const { showCalendar, userId } = useContext(UserContext);
+  const { showCalendar, setShowCalendar, userId } = useContext(UserContext);
+  const [timeLeft, setTimeLeft] = useState(300);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (showCalendar && timeLeft > 0) {
+      intervalId = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+    } 
+    else if (timeLeft === 0) {
+      setShowCalendar(false);
+    }
+    return () => clearInterval(intervalId);
+  }, [showCalendar, timeLeft, setShowCalendar]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
 
   return (
     <>
       <Header/>
-      <main className='w-full h-auto flex justify-center items-center pb-10 flex-col gap-20'>
+      <main className='w-full h-auto flex justify-center items-center pb-10 flex-col gap-20 font-rubik'>
         <img src={soundWave} width={150} alt="" />
         
         <div>
-          <h1 className='font-bold text-6xl text-center text-[#0D1B2A]'>Welcome to CuraAI</h1>
-          <p className='mx-auto text-[15px] text-center w-100 text-gray-500'>Just press and hold the microphone to speak</p>
+          <h1 className='font-bold text-6xl text-center text-[#0D1B2A]'>Bienvenido a CuraAI</h1>
+          <p className='mx-auto text-[15px] text-center w-100 text-gray-500'>Presioná el boton 'Grabar' para empezar a hablar con Cura</p>
         </div>
-        {/*<FunctionalSection/>*/}
+        
         <VoiceRecorder patientId={userId}/>
+
         {showCalendar ? (
-          <div className="w-full">
+          <div className="w-full flex justify-center flex-col items-center gap-4">
+            <div className="flex flex-col items-center">
+                <span className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-2">El calendario se cierra en: </span>
+                <div className={`text-5xl font-bold font-mono ${timeLeft < 60 ? "text-red-500" : "text-[#61A5C2]"}`}>
+                {formatTime(timeLeft)}
+                </div>
+            </div>
+
             <InlineWidget 
               url="https://calendly.com/mauroradino22/30min"
-              styles={{ height: '700px' }} 
+              styles={{ height: '700px', width: '100%' }} 
               utm={{ utmSource: 'facebook', utmCampaign: 'spring_sale' }} 
               prefill={{ name: 'Jane Doe', email: 'jane@example.com' }} 
             />
           </div>
         ) : null}
 
-        <h2 className='text-4xl mt-12 font-bold text-[#0D1B2A]'>What Cura can do?</h2>
-        
-        <div className='flex w-9/12 mx-auto gap-20 bg-[#61A5C2] p-10 rounded-lg text-white flex-col lg:w-7/12 lg:h-90 md:flex-row md:w-10/12 md:h-80'>
-          <div className='flex w-full flex-col justify-center gap-6 max-w-md'>
-            <h3 className='font-bold text-3xl'>Assist you in receiving documents</h3>
-            <p className='font-bold w-full'>Our agent has a feature called "Scan my docs," which allows users to upload documents directly from the page. The system analyzes and extracts the text from the file for processing, summarizing, or use in other automated tasks.</p>
-          </div>
-          <img className='rounded-lg max-w-full' height={300} width={300} src="/documentsReception.jpg" alt="" />
-        </div>
-        
-        <div className='flex w-9/12 mx-auto gap-20 bg-[#61A5C2] p-10 rounded-lg text-white flex-col lg:w-7/12 lg:h-90 md:flex-row md:w-10/12'>
-          <div className='flex flex-col justify-center gap-6 max-w-md'>
-            <h3 className='font-bold text-3xl'>Medical Asisstant 24 hours</h3>
-            <p className='font-bold'>Our agent has a feature called "Scan my docs," which allows users to upload documents directly from the page. The system analyzes and extracts the text from the file for processing, summarizing, or use in other automated tasks.</p>
-          </div>
-          <img className='rounded-lg max-w-full' height={300} width={300} src="/docTalking.jpg" alt="" />
-        </div>
+        <h2 className='text-4xl mt-12 font-bold text-[#0D1B2A]'>Que puede hacer Cura?</h2>
+        <FunctionalityGrid/>
       </main>
     </>
   )

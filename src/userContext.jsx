@@ -52,9 +52,18 @@ export function UserProvider({ children }) {
     })
   }
 
-  const register = async({email, password, firstName, lastName}) => {
-    const new_user = await client.auth.signUp({email, password, options: {data: {firstName: firstName, lastName: lastName}}})
+  const register = async({email, password, firstName, lastName, role}) => {
+    const new_user = await client.auth.signUp({email, password, options: {data: {firstName: firstName, lastName: lastName, role: role}}})
     const { data, error } = await client.from("UsersData").insert([{"user_id": new_user.data.user.id, "nombre":firstName, "apellido": lastName}]).select()
+    if (error) {
+        console.error("Error inserting user data:", error);
+    } else {
+        console.log("User data inserted:", data);
+    }
+  }
+
+  const registerDoctor = async({name, surname, calendlyURL, mail, speciality}) => {
+    const { data, error } = await client.from("DoctorsData").insert([{"name": name, "surname": surname, "calendly_url": calendlyURL, "email": mail, "speciality": speciality}]).select()
     if (error) {
         console.error("Error inserting user data:", error);
     } else {
@@ -64,7 +73,7 @@ export function UserProvider({ children }) {
 
 
   return (
-    <UserContext.Provider value={{ user, setUser, client, setClient, setUserId, userId, loading, logout, register, showCalendar, setShowCalendar }}>
+    <UserContext.Provider value={{ user, setUser, client, setClient, setUserId, userId, loading, logout, register, showCalendar, setShowCalendar, registerDoctor }}>
       {children}
     </UserContext.Provider>
   )

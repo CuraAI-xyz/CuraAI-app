@@ -22,7 +22,7 @@ function VoiceRecorder({ patientId = "123" }) {
   const connectWebSocket = () => {
     // Asegúrate de que esta URL coincida con tu backend
     
-    const wsUrl = `wss://curaai-agent-production.up.railway.app/audio?patient_id=${patientId}`;
+    const wsUrl = `ws://127.0.0.1:8080/audio?patient_id=${patientId}`;
     console.log("Intentando conectar a:", wsUrl);
 
     const ws = new WebSocket(wsUrl);
@@ -56,8 +56,8 @@ function VoiceRecorder({ patientId = "123" }) {
         audio.play().catch(e => console.warn("Autoplay bloqueado:", e));
       } 
       else if (typeof data === 'string') {
+        console.log("LA DATAA: ", data)
           setShowCalendar(true)
-          console.log("ESTOY INTENTANDO MOSTRAR CALENDARIO")
       }
     };
     
@@ -149,10 +149,7 @@ function VoiceRecorder({ patientId = "123" }) {
   };
 
   return (
-    <div className="voice-recorder-container" style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}>
-      <h3>Estado: {connectionStatus}</h3>
-
-      {/* Botón Principal */}
+    <div className="voice-recorder-container font-rubik" style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}>
       <div className="controls" style={{ margin: '20px 0' }}>
         <button 
           onClick={isRecording ? stopRecording : startRecording}
@@ -161,14 +158,15 @@ function VoiceRecorder({ patientId = "123" }) {
             fontSize: '18px',
             borderRadius: '50px',
             cursor: 'pointer',
-            backgroundColor: isRecording ? '#ff4d4f' : '#1890ff',
+            backgroundColor: isRecording ? '#ff4d4f' : '#61A5C2',
             color: 'white',
             border: 'none'
           }}
-        >
+          >
           {isRecording ? '⏹ Detener' : '🎙 Grabar'}
         </button>
       </div>
+          <h3>Estado: {connectionStatus}</h3>
     </div>
   );
 }
