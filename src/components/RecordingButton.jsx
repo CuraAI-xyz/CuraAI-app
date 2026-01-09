@@ -16,7 +16,7 @@ function RecordingButton() {
   useEffect(() => {
     setShowCalendar(false); 
     if (!wsRef.current || wsRef.current.readyState === WebSocket.CLOSED) {
-      wsRef.current = new WebSocket("wss://127.0.0.1:8080/audio");
+      wsRef.current = new WebSocket("wss://curaai-agent-production.up.railway.app:8080/audio");
       
       wsRef.current.onopen = () => console.log("WebSocket conectado");
       
@@ -47,7 +47,7 @@ function RecordingButton() {
         setTimeout(() => {
           if (wsRef.current?.readyState === WebSocket.CLOSED) {
             console.log("Intentando reconectar WebSocket...");
-            wsRef.current = new WebSocket("ws://127.0.0.1:8080/audio");
+            wsRef.current = new WebSocket("wss://curaai-agent-production.up.railway.app:8080/audio");
           }
         }, 3000);
       };

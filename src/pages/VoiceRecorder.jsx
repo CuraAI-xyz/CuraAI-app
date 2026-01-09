@@ -22,7 +22,7 @@ function VoiceRecorder({ patientId = "123" }) {
   const connectWebSocket = () => {
     // Asegúrate de que esta URL coincida con tu backend
     
-    const wsUrl = `ws://127.0.0.1:8080/audio?patient_id=${patientId}`;
+    const wsUrl = `wss://curaai-agent-production.up.railway.app:8080/audio?patient_id=${patientId}`;
     console.log("Intentando conectar a:", wsUrl);
 
     const ws = new WebSocket(wsUrl);
