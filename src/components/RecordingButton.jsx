@@ -12,11 +12,12 @@ function RecordingButton() {
   const chunksRef = useRef([]);
   const wsRef = useRef(null);
   const audioRef = useRef(null);
+  const pendingAudioMimeTypeRef = useRef(null);
 
   useEffect(() => {
     setShowCalendar(false); 
     if (!wsRef.current || wsRef.current.readyState === WebSocket.CLOSED) {
-      wsRef.current = new WebSocket("wss://curaai-agent-production.up.railway.app/audio");
+      wsRef.current = new WebSocket(`wss://curaai-agent-production.up.railway.app/audio?patient_id=${userId}`);
       wsRef.current.binaryType = 'arraybuffer';
       
       wsRef.current.onopen = () => console.log("WebSocket conectado");
@@ -29,16 +30,28 @@ function RecordingButton() {
             if (message.type === "ui_update" && message.action === "show_calendar") {
               setShowCalendar(true); 
             }
+            // --- DETECTAR METADATA DE AUDIO (PASO 1) ---
+            else if (message.type === "audio") {
+              // Guardar el mime_type para el siguiente mensaje (bytes)
+              pendingAudioMimeTypeRef.current = message.mime_type || "audio/mpeg";
+              console.log("Metadata de audio recibida:", message);
+            }
           } catch (e) {
             console.error("Error parsing JSON:", e);
           } 
         } 
-        // --- LÓGICA DE AUDIO ---
-        else if (event.data instanceof ArrayBuffer) {
-          const blob = new Blob([event.data], { type: "audio/wav" });
+        // --- LÓGICA DE AUDIO (PASO 2: BYTES) ---
+        else if (event.data instanceof ArrayBuffer || event.data instanceof Blob) {
+          // Usar el mime_type guardado o un valor por defecto
+          const mimeType = pendingAudioMimeTypeRef.current || "audio/mpeg";
+          
+          // Crear Blob con el mime_type correcto (importante para iOS/iPad)
+          const blob = new Blob([event.data], { type: mimeType });
+          
+          // Limpiar el mime_type pendiente después de usarlo
+          pendingAudioMimeTypeRef.current = null;
+          
           await playAudioBlob(blob);
-        } else if (event.data instanceof Blob) {
-          await playAudioBlob(event.data);
         }
       };
       
@@ -83,9 +96,15 @@ function RecordingButton() {
       audio.onerror = (err) => {
         console.error("Error reproduciendo audio IA:", err);
         setIsPlayingAI(false);
+        URL.revokeObjectURL(url);
       };
 
-      await audio.play();
+      // Manejo de errores con .catch() para iOS/iPad
+      await audio.play().catch((err) => {
+        console.error("Error al reproducir audio IA (iOS/iPad):", err);
+        setIsPlayingAI(false);
+        URL.revokeObjectURL(url);
+      });
     } catch (err) {
       console.error("Error al reproducir audio IA:", err);
       setIsPlayingAI(false);
